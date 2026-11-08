@@ -1,0 +1,25 @@
+{
+  "name": "pg-migrate-lock-guard",
+  "version": "0.1.0",
+  "description": "Find and, only when you ask, clear stale Postgres advisory locks left behind by migrations on pooled connections. Dry run by default.",
+  "type": "module",
+  "main": "src/index.ts",
+  "bin": { "pg-migrate-lock-guard": "src/cli.ts" },
+  "license": "MIT",
+  "author": "Asad Baig",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test \"test/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "guard": "node src/cli.ts"
+  },
+  "dependencies": {
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/pg": "^8.11.0",
+    "typescript": "^5.7.0"
+  },
+  "keywords": ["postgres", "migrations", "advisory-lock", "pgbouncer", "neon", "prisma", "ci"]
+}
