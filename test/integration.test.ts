@@ -47,6 +47,7 @@ test("terminate:true kills the holder and frees the lock", opts, async () => {
   assert.equal(await alive(holder), false);
   const { rows } = await guard.query("select pg_try_advisory_lock(4343) as got");
   assert.equal(rows[0].got, true);
+  await guard.query("select pg_advisory_unlock(4343)"); // the probe above took the lock; release it so later tests start clean
 });
 
 test("a lock with a different key is not touched", opts, async () => {
